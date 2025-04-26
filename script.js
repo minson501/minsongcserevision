@@ -168,3 +168,15 @@ async function getRevisionNotes() {
 document.getElementById('flashcard').addEventListener('click', function() {
     this.classList.toggle('active');
 });
+function showProgress() {
+    const revisedTopics = JSON.parse(localStorage.getItem('revisedTopics')) || [];
+    const progressDiv = document.getElementById('progressList');
+
+    if (revisedTopics.length === 0) {
+        progressDiv.innerText = 'You have not revised any topics yet!';
+    } else {
+        progressDiv.innerHTML = '<h3>Revised Topics:</h3><ul>' +
+            revisedTopics.map(topic => `<li>${topic}</li>`).join('') +
+            '</ul>';
+    }
+}
