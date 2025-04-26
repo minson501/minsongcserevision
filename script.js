@@ -75,3 +75,6 @@ button:hover {
 #darkModeBtn:hover {
     background-color: #333;
 }
+function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+}
