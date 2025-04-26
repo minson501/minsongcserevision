@@ -115,3 +115,49 @@ async function getRevisionNotes() {
         document.getElementById('loading').style.display = 'none'; // hide loading
     }
 }
+async function getRevisionNotes() {
+    const subject = document.getElementById('subject').value;
+    const topic = document.getElementById('topic').value;
+
+    if (!topic) {
+        alert('Please enter a topic!');
+        return;
+    }
+
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('flashcard-front').innerText = '';
+    document.getElementById('flashcard-back').innerText = '';
+    document.getElementById('flashcard').classList.remove('active');
+
+    const prompt = `Give me a short GCSE-level revision note about ${topic} in ${subject}.`;
+
+    try {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer YOUR_API_KEY',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: "gpt-4",
+                messages: [{ role: "user", content: prompt }]
+            })
+        });
+
+        const data = await response.json();
+        const outputText = data.choices[0].message.content;
+
+        document.getElementById('flashcard-front').innerText = topic;
+        document.getElementById('flashcard-back').innerText = outputText;
+    } catch (error) {
+        document.getElementById('flashcard-front').innerText = 'Error';
+        document.getElementById('flashcard-back').innerText = 'Something went wrong.';
+    } finally {
+        document.getElementById('loading').style.display = 'none';
+    }
+}
+
+// Flip flashcard on click
+document.getElementById('flashcard').addEventListener('click', function() {
+    this.classList.toggle('active');
+});
