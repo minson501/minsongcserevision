@@ -82,6 +82,13 @@ async function getRevisionNotes() {
     const subject = document.getElementById('subject').value;
     const topic = document.getElementById('topic').value;
 
+    // Save revised topic to localStorage
+let revisedTopics = JSON.parse(localStorage.getItem('revisedTopics')) || [];
+if (!revisedTopics.includes(topic)) {
+    revisedTopics.push(topic);
+    localStorage.setItem('revisedTopics', JSON.stringify(revisedTopics));
+}
+    
     if (!topic) {
         alert('Please enter a topic!');
         return;
