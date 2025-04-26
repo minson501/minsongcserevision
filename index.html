@@ -1,38 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GCSE AI Revision Helper</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div id="loading" style="display: none;">Loading...</div>
-    <h1>GCSE AI Revision Helper</h1>
-<button id="darkModeBtn" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    <div class="subject-select">
-        <label for="subject">Choose a subject:</label>
-        <select id="subject">
-            <option value="Maths">Maths</option>
-            <option value="Biology">Biology</option>
-            <option value="History">History</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="English Literature">English Literature</option>
-        </select>
-    </div>
-
-    <div class="topic-input">
-        <input type="text" id="topic" placeholder="Enter a topic (e.g., Pythagoras)">
-        <button onclick="getRevisionNotes()">Get Revision Notes</button>
-    </div>
-
-    <div class="flashcard" id="flashcard">
-    <div class="front" id="flashcard-front">Front</div>
-    <div class="back" id="flashcard-back">Back</div>
-</div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-<button onclick="showProgress()">Show My Revised Topics</button>
-<div id="progressList"></div>
+<!-- In index.html under Guided Topic Quizzes section -->
+<section id="guidedSection" class="section">
+  <h2>Guided Topic Quizzes</h2>
+  <div id="topicHeader">
+    <h3 id="currentTopicName">Topic 1</h3>
+    <span id="topicTracker">0 / 0</span>
+    <progress id="quizProgress" value="0" max="0"></progress>
+  </div>
+  <div id="questionContainer">
+    <!-- Questions will be injected here -->
+  </div>
+  <button id="submitAnswerBtn">Submit Answer</button>
+  <div id="quizFeedback"></div>
+  <button id="nextTopicBtn" style="display:none;">Next Topic</button>
+</section>
+<!-- In index.html under Mock Exam section -->
+<section id="mockExamSection" class="section" style="display:none;">
+  <h2>Mock Exam Mode</h2>
+  <div id="examSetup">
+    <label>Number of Questions: <input type="number" id="numQuestions" min="5" max="50" value="10"></label>
+    <label><input type="checkbox" id="showAnswersCheckbox"> Show answers at end</label>
+    <button id="startExamBtn">Start Exam</button>
+  </div>
+  <div id="examContainer" style="display:none;">
+    <div id="timerDisplay">Time: 00:00</div>
+    <div id="examQuestions"></div>
+    <button id="submitExamBtn">Submit Exam</button>
+  </div>
+  <div id="examResults"></div>
+</section>
+<!-- In index.html under Revision Notes section -->
+<section id="notesSection" class="section" style="display:none;">
+  <h2>Revision Notes</h2>
+  <div id="notesList">
+    <details class="topic-section">
+      <summary>Algebra</summary>
+      <div class="topic-notes" id="notes-Algebra">
+        <p>Loading notes...</p>
+      </div>
+    </details>
+    <details class="topic-section">
+      <summary>Geometry</summary>
+      <div class="topic-notes" id="notes-Geometry">
+        <p>Loading notes...</p>
+      </div>
+    </details>
+    <details class="topic-section">
+      <summary>Statistics</summary>
+      <div class="topic-notes" id="notes-Statistics">
+        <p>Loading notes...</p>
+      </div>
+    </details>
+  </div>
+</section>
