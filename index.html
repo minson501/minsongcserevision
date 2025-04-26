@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCSE AI Revision Helper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>GCSE AI Revision Helper</h1>
+
+    <div class="subject-select">
+        <label for="subject">Choose a subject:</label>
+        <select id="subject">
+            <option value="Maths">Maths</option>
+            <option value="Biology">Biology</option>
+            <option value="History">History</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="English Literature">English Literature</option>
+        </select>
+    </div>
+
+    <div class="topic-input">
+        <input type="text" id="topic" placeholder="Enter a topic (e.g., Pythagoras)">
+        <button onclick="getRevisionNotes()">Get Revision Notes</button>
+    </div>
+
+    <div id="output" class="output-box"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
