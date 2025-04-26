@@ -23,7 +23,7 @@ async function loadTopicQuestions(topic) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer YOUR_API_KEY_HERE'
+      'Authorization': 'Bearer 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'
     },
     body: JSON.stringify({
       model: "gpt-4",
